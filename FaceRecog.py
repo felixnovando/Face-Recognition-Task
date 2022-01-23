@@ -27,6 +27,7 @@ def findEncodings(images):
     encodeList = []
     for img in images:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        
         encode = face_recognition.face_encodings(img)[0]
         encodeList.append(encode)
     return encodeList
@@ -62,14 +63,6 @@ while True:
 
             cv2.putText(img, "{}".format(name), (x1+6, y2+25),
                         cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
-
-            # cv2.rectangle(img, (x1, y2-35), (x2, y2), (0, 255, 0), cv2.FILLED)
-            # cv2.putText(img, "{}".format(name), (x1+6, y2-6),
-            #             cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
-
-
-            # cv2.putText(img, "{} - {} %".format(name, round((1 - faceDis[0]) * 100, 2)), (x1+6, y2-6),
-            #             cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
 
     cv2.imshow('Webcam', img)
     cv2.waitKey(1)
